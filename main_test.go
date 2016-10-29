@@ -2,6 +2,19 @@ package main
 
 import "testing"
 
+func TestIndexPosition(t *testing.T) {
+	var pos int
+	pos = indexPosition("y", []string{"x", "y", "z"})
+	if pos != 1 {
+		t.Errorf("should be 1, got %v", pos)
+	}
+
+	pos = indexPosition("z", []string{"x", "y", "z"})
+	if pos != 2 {
+		t.Errorf("should be 2, got %v", pos)
+	}
+}
+
 func TestEncode(t *testing.T) {
 	cases := []struct {
 		in, want string
