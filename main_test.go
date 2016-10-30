@@ -22,6 +22,9 @@ func TestEncode(t *testing.T) {
 		{
 			"Why did the chicken cross the road?", "Jul qvq gur puvpxra pebff gur ebnq?",
 		},
+		{
+			"!@#$", "!@#$",
+		},
 	}
 
 	for _, c := range cases {
@@ -38,6 +41,9 @@ func TestDecode(t *testing.T) {
 	}{
 		{
 			"Gb trg gb gur bgure fvqr!", "To get to the other side!",
+		},
+		{
+			"...", "...",
 		},
 	}
 
