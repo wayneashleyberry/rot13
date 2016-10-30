@@ -4,13 +4,14 @@ import "strings"
 
 func indexPosition(s string, arr []string) int {
 	for i, c := range arr {
-		if string(c) == s {
+		if c == s {
 			return i
 		}
 	}
 	return -1
 }
 
+// Encode takes a plain text message and returns the rot13 encoded result.
 func Encode(message string) string {
 	alphabet := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 	var encoded []string
@@ -33,7 +34,7 @@ func Encode(message string) string {
 			pos = (i + 13) - len(alphabet)
 		}
 
-		if isUpper == true {
+		if isUpper {
 			encoded = append(encoded, strings.ToUpper(alphabet[pos]))
 			continue
 		}
@@ -42,6 +43,7 @@ func Encode(message string) string {
 	return strings.Join(encoded, "")
 }
 
+// Decode takes a rot13 encoded message and returns the unencoded result.
 func Decode(message string) string {
 	alphabet := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 	var decoded []string
@@ -64,7 +66,7 @@ func Decode(message string) string {
 			pos = len(alphabet) + (i - 13)
 		}
 
-		if isUpper == true {
+		if isUpper {
 			decoded = append(decoded, strings.ToUpper(alphabet[pos]))
 			continue
 		}

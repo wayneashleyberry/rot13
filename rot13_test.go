@@ -16,41 +16,21 @@ func TestIndexPosition(t *testing.T) {
 }
 
 func TestEncode(t *testing.T) {
-	cases := []struct {
-		in, want string
-	}{
-		{
-			"Why did the chicken cross the road?", "Jul qvq gur puvpxra pebff gur ebnq?",
-		},
-		{
-			"!@#$", "!@#$",
-		},
-	}
+	input := "Why did the chicken cross the road?"
+	expected := "Jul qvq gur puvpxra pebff gur ebnq?"
+	output := Encode(input)
 
-	for _, c := range cases {
-		got := Encode(c.in)
-		if got != c.want {
-			t.Errorf("Expected: %q Got: %q Using %q", c.want, got, c.in)
-		}
+	if output != expected {
+		t.Errorf("Expected: %q Got: %q Using %q", expected, output, input)
 	}
 }
 
 func TestDecode(t *testing.T) {
-	cases := []struct {
-		in, want string
-	}{
-		{
-			"Gb trg gb gur bgure fvqr!", "To get to the other side!",
-		},
-		{
-			"...", "...",
-		},
-	}
+	input := "Gb trg gb gur bgure fvqr!"
+	expected := "To get to the other side!"
+	output := Decode(input)
 
-	for _, c := range cases {
-		got := Decode(c.in)
-		if got != c.want {
-			t.Errorf("Expected: %q Got: %q Using %q", c.want, got, c.in)
-		}
+	if output != expected {
+		t.Errorf("Expected: %q Got: %q Using %q", expected, output, input)
 	}
 }

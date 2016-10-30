@@ -1,7 +1,10 @@
 language: go
 before_install:
   - go get github.com/mattn/goveralls
+  - go get github.com/alecthomas/gometalinter
+  - gometalinter --install
 script:
   - go fmt
+  - gometalinter ./...
   - go test
   - $GOPATH/bin/goveralls -service=travis-ci
