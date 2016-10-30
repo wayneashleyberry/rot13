@@ -1,10 +1,6 @@
-package main
+package rot13
 
-import (
-	"flag"
-	"fmt"
-	"strings"
-)
+import "strings"
 
 func indexPosition(s string, arr []string) int {
 	for i, c := range arr {
@@ -75,17 +71,4 @@ func Decode(message string) string {
 		decoded = append(decoded, alphabet[pos])
 	}
 	return strings.Join(decoded, "")
-}
-
-func main() {
-	var decode bool
-	flag.BoolVar(&decode, "decode", false, "...")
-	flag.Parse()
-
-	if decode {
-		fmt.Println(Decode(strings.Join(flag.Args(), " ")))
-		return
-	}
-
-	fmt.Println(Encode(strings.Join(flag.Args(), " ")))
 }
