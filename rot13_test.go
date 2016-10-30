@@ -34,3 +34,15 @@ func TestDecode(t *testing.T) {
 		t.Errorf("Expected: %q Got: %q Using %q", expected, output, input)
 	}
 }
+
+func BenchmarkEncode(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Encode("Why did the chicken cross the road?")
+	}
+}
+
+func BenchmarkDecode(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Decode("Gb trg gb gur bgure fvqr!")
+	}
+}
