@@ -18,6 +18,11 @@ func Encode(message string) string {
 	var encoded []string
 	for _, c := range message {
 		strC := string(c)
+		if strC == " " {
+			encoded = append(encoded, " ")
+			continue
+		}
+
 		isUpper := false
 		if strings.ToLower(strC) != strC {
 			isUpper = true
@@ -52,6 +57,11 @@ func Decode(message string) string {
 	var decoded []string
 	for _, c := range message {
 		strC := string(c)
+		if strC == " " {
+			decoded = append(decoded, " ")
+			continue
+		}
+
 		isUpper := false
 		if strings.ToLower(strC) != strC {
 			isUpper = true
