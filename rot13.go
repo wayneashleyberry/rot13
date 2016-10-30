@@ -14,24 +14,26 @@ func indexPosition(s string, arr []string) int {
 // Encode takes a plain text message and returns the rot13 encoded result.
 func Encode(message string) string {
 	alphabet := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
+	var alphaLen = len(alphabet)
 	var encoded []string
 	for _, c := range message {
+		strC := string(c)
 		isUpper := false
-		if strings.ToLower(string(c)) != string(c) {
+		if strings.ToLower(strC) != strC {
 			isUpper = true
 		}
 
-		i := indexPosition(strings.ToLower(string(c)), alphabet)
+		i := indexPosition(strings.ToLower(strC), alphabet)
 		if i == -1 {
-			encoded = append(encoded, string(c))
+			encoded = append(encoded, strC)
 			continue
 		}
 
 		var pos int
 		pos = i + 13
 
-		if pos >= len(alphabet) {
-			pos = (i + 13) - len(alphabet)
+		if pos >= alphaLen {
+			pos = (i + 13) - alphaLen
 		}
 
 		if isUpper {
@@ -46,16 +48,18 @@ func Encode(message string) string {
 // Decode takes a rot13 encoded message and returns the unencoded result.
 func Decode(message string) string {
 	alphabet := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
+	var alphaLen = len(alphabet)
 	var decoded []string
 	for _, c := range message {
+		strC := string(c)
 		isUpper := false
-		if strings.ToLower(string(c)) != string(c) {
+		if strings.ToLower(strC) != strC {
 			isUpper = true
 		}
 
-		i := indexPosition(strings.ToLower(string(c)), alphabet)
+		i := indexPosition(strings.ToLower(strC), alphabet)
 		if i == -1 {
-			decoded = append(decoded, string(c))
+			decoded = append(decoded, strC)
 			continue
 		}
 
@@ -63,7 +67,7 @@ func Decode(message string) string {
 		pos = i - 13
 
 		if pos < 0 {
-			pos = len(alphabet) + (i - 13)
+			pos = alphaLen + (i - 13)
 		}
 
 		if isUpper {
