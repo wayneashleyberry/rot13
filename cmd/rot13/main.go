@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/wayneashleyberry/rot13"
+	"github.com/wayneashleyberry/rot13/pkg/rot13"
 )
 
 func main() {
