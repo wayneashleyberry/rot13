@@ -8,18 +8,22 @@ func indexPosition(s string, arr []string) int {
 			return i
 		}
 	}
+
 	return -1
 }
 
 // Encode takes a plain text message and returns the rot13 encoded result.
 func Encode(message string) string {
 	alphabet := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
-	var alphaLen = len(alphabet)
+	alphaLen := len(alphabet)
+
 	var encoded []string
+
 	for _, c := range message {
 		strC := string(c)
 		if strC == " " {
 			encoded = append(encoded, " ")
+
 			continue
 		}
 
@@ -31,6 +35,7 @@ func Encode(message string) string {
 		i := indexPosition(strings.ToLower(strC), alphabet)
 		if i == -1 {
 			encoded = append(encoded, strC)
+
 			continue
 		}
 
@@ -43,22 +48,28 @@ func Encode(message string) string {
 
 		if isUpper {
 			encoded = append(encoded, strings.ToUpper(alphabet[pos]))
+
 			continue
 		}
+
 		encoded = append(encoded, alphabet[pos])
 	}
+
 	return strings.Join(encoded, "")
 }
 
 // Decode takes a rot13 encoded message and returns the unencoded result.
 func Decode(message string) string {
 	alphabet := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
-	var alphaLen = len(alphabet)
+	alphaLen := len(alphabet)
+
 	var decoded []string
+
 	for _, c := range message {
 		strC := string(c)
 		if strC == " " {
 			decoded = append(decoded, " ")
+
 			continue
 		}
 
@@ -70,6 +81,7 @@ func Decode(message string) string {
 		i := indexPosition(strings.ToLower(strC), alphabet)
 		if i == -1 {
 			decoded = append(decoded, strC)
+
 			continue
 		}
 
@@ -82,9 +94,12 @@ func Decode(message string) string {
 
 		if isUpper {
 			decoded = append(decoded, strings.ToUpper(alphabet[pos]))
+
 			continue
 		}
+
 		decoded = append(decoded, alphabet[pos])
 	}
+
 	return strings.Join(decoded, "")
 }
