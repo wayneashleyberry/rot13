@@ -11,12 +11,12 @@ go get github.com/wayneashleyberry/rot13/cmd/rot13/...
 
 ### Usage
 
-```
+```sh
 rot13 'Hello, World!'
 Uryyb, Jbeyq!
 ```
 
-```
+```sh
 rot13 --decode 'Uryyb, Jbeyq!'
 Hello, World!
 ```

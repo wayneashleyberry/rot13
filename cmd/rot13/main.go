@@ -10,11 +10,13 @@ import (
 
 func main() {
 	var decode bool
+
 	flag.BoolVar(&decode, "decode", false, "...")
 	flag.Parse()
 
 	if decode {
 		fmt.Println(rot13.Decode(strings.Join(flag.Args(), " ")))
+
 		return
 	}
 
